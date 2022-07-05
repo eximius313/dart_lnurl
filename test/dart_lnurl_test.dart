@@ -53,11 +53,10 @@ void main() async {
 
   group('Tests for "getParams"', () {
     test('should decode lnurl-pay', () async {
-      final url =
-          'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNZD9NHXATW9EU8J730D3H82UNV94CXZ7FLWDJHXUMFDAHR6C3NXGCNGCEE8YEX2CFHXCCRYCNXXUENVEFHXQCR2EF5XS6R2D35XUERSEFC8YCKGDF5XAJNGCTX8PJRYVP4XDJNVD3CX3NRVEFCX4SSWRA86F';
-      final res = await getParams(url);
+    final url = 'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHQCTE8AEK2UMND9HKU0F3VFNRVVF5XU6XGD33X9JNJD3SVSMKZVMRX4NX2VPSVCMNWDP4XVUXVEPHVVURJCFCXUUNWDEE8YCNYWTRXQ6NSWP4V56RJEFKVCCXYXKMWAE';
+    final res = await getParams(url);
       expect(res.payParams, isNotNull);
-    }, skip: true); //domain https://lnurl.bigsun.xyz/lnurl-pay?session=b3214c992ea7602bf736e7005e444564728e891d547e4af8d2053e6684f6e85a can not be found
+    });
 
     test('should interrupt after timeout', () async {
       final notExistingUrl = 'lnurl1dp68gurn8ghj7etcv9khqmr99e3k7mf0d3h82unvq257ls';
