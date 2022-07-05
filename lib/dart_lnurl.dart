@@ -62,7 +62,10 @@ Future<LNURLParseResult> getParams(String encodedUrl, {Duration? timeout}) async
     switch (parsedJson['tag']) {
       case 'withdrawRequest':
         return LNURLParseResult(
-          withdrawalParams: LNURLWithdrawParams.fromJson(parsedJson),
+          withdrawalParams: LNURLWithdrawParams.fromJson({
+            ...parsedJson,
+            ...{'pr': lnUrl}
+          }),
         );
 
       case 'payRequest':
