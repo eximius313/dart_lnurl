@@ -122,3 +122,12 @@ Future<LNURLParseResult> getParams(String encodedUrl, {Duration? timeout}) async
     );
   }
 }
+
+bool validateLnUrl(encodedUrl) {
+  try {
+    findLnUrl(encodedUrl);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
