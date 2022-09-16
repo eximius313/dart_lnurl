@@ -38,7 +38,6 @@ void main() {
 
   test('should decipher preimage', () {
     final plainText = 'Secret message here';
-
     final preimage =
         '43aa9346163deada83ec49fa670b8a3541c9ef469d942cd2c7f81206e535e031';
 
@@ -61,11 +60,6 @@ void main() {
   });
 
   group('Tests for "getParams"', () {
-    test('should decode lnurl-pay', () async {
-      final url = 'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHQCTE8AEK2UMND9HKU0F3VFNRVVF5XU6XGD33X9JNJD3SVSMKZVMRX4NX2VPSVCMNWDP4XVUXVEPHVVURJCFCXUUNWDEE8YCNYWTRXQ6NSWP4V56RJEFKVCCXYXKMWAE';
-      final res = await getParams(url);
-      expect(res.payParams, isNotNull);
-    });
 
     test('should interrupt after timeout', () async {
       final notExistingUrl = 'lnurl1dp68gurn8ghj7etcv9khqmr99e3k7mf0d3h82unvq257ls';
@@ -77,13 +71,22 @@ void main() {
         && e.toString() == 'TimeoutException after 0:00:00.010000: Future not completed'
       )));
     });
-  });
 
-  test('should find lnurl-auth params', () async {
-    final url =
-        'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKKCMM8D9HR7ARPVU7KCMM8D9HZV6E384JNXCF3VSCNSE358QMKZVPK8YENZVMYXUEN2DE4X5CNGWP4VSMX2VE58Q6KYCFNX5UXVDNXX9JKXDENVDSNSCE5XU6XVVR9V56XGCTZS8GQ23';
-    final res = await getParams(url);
-    expect(res.authParams, isNotNull);
-    expect(res.error, isNull);
+    test('should decode lnurl-pay', () async {
+      final url = 'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHQCTE8AEK2UMND9HKU0F3VFNRVVF5XU6XGD33X9JNJD3SVSMKZVMRX4NX2VPSVCMNWDP4XVUXVEPHVVURJCFCXUUNWDEE8YCNYWTRXQ6NSWP4V56RJEFKVCCXYXKMWAE';
+      final uri = decodeLnUri(url);
+      final res = await getParams(url);
+
+      expect(uri.host, 'lnurl.fiatjaf.com');
+      expect(res.payParams, isNotNull);
+    });
+
+    test('should find lnurl-auth params', () async {
+      final url =
+          'lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKKCMM8D9HR7ARPVU7KCMM8D9HZV6E384JNXCF3VSCNSE358QMKZVPK8YENZVMYXUEN2DE4X5CNGWP4VSMX2VE58Q6KYCFNX5UXVDNXX9JKXDENVDSNSCE5XU6XVVR9V56XGCTZS8GQ23';
+      final res = await getParams(url);
+      expect(res.authParams, isNotNull);
+      expect(res.error, isNull);
+    });
   });
 }
