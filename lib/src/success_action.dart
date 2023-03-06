@@ -1,5 +1,4 @@
 import 'package:dart_lnurl/dart_lnurl.dart';
-import 'package:dart_lnurl/src/types.dart';
 import 'package:encrypt/encrypt.dart';
 
 /// Given a success action, will return the decrypted AES payload.

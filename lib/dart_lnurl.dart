@@ -1,4 +1,5 @@
-library dart_lnurl;
+///A Dart implementation of the LNURL specification.
+library;
 
 import 'dart:async';
 import 'dart:convert';
@@ -6,18 +7,18 @@ import 'dart:typed_data';
 
 import 'package:bech32/bech32.dart';
 import 'package:crypto/crypto.dart';
-import 'package:dart_lnurl/src/bech32.dart';
-import 'package:dart_lnurl/src/lnurl.dart';
-import 'package:dart_lnurl/src/types.dart';
 import 'package:ecdsa/ecdsa.dart' as ecdsa;
 import 'package:elliptic/elliptic.dart';
 import 'package:encrypt/encrypt.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+
+import 'src/dart_lnurl_base.dart';
+import 'src/lnurl.dart';
+import 'src/bech32.dart';
 
 export 'src/bech32.dart';
 export 'src/success_action.dart';
-export 'src/types.dart';
+export 'src/dart_lnurl_base.dart';
 
 /// Get params from a lnurl string. Possible types are:
 /// * `LNURLResponse`

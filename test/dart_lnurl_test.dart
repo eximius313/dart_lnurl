@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:test/test.dart';
+
 import 'package:bip32/bip32.dart' as bip32;
 import 'package:dart_lnurl/dart_lnurl.dart';
 import 'package:dart_lnurl/src/lnurl.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:hex/hex.dart';
 import 'package:http/http.dart';
 
